@@ -13,6 +13,7 @@
 		586A6FE622113C03005A114A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 586A6FE522113C03005A114A /* Assets.xcassets */; };
 		586A6FE922113C03005A114A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 586A6FE722113C03005A114A /* LaunchScreen.storyboard */; };
 		586A6FF122113E8E005A114A /* FriendsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586A6FF022113E8E005A114A /* FriendsController.swift */; };
+		586A6FFE22118412005A114A /* FriendsControllerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586A6FFD22118412005A114A /* FriendsControllerHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		586A6FE822113C03005A114A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		586A6FEA22113C03005A114A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		586A6FF022113E8E005A114A /* FriendsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsController.swift; sourceTree = "<group>"; };
+		586A6FFD22118412005A114A /* FriendsControllerHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsControllerHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,7 @@
 			children = (
 				586A6FDB22113BF8005A114A /* AppDelegate.swift */,
 				586A6FF022113E8E005A114A /* FriendsController.swift */,
+				586A6FFD22118412005A114A /* FriendsControllerHelper.swift */,
 				586A6FDF22113BF8005A114A /* Main.storyboard */,
 				586A6FE522113C03005A114A /* Assets.xcassets */,
 				586A6FE722113C03005A114A /* LaunchScreen.storyboard */,
@@ -141,6 +144,7 @@
 				586A6FE422113BF8005A114A /* fbMessenger.xcdatamodeld in Sources */,
 				586A6FF122113E8E005A114A /* FriendsController.swift in Sources */,
 				586A6FDC22113BF8005A114A /* AppDelegate.swift in Sources */,
+				586A6FFE22118412005A114A /* FriendsControllerHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
