@@ -14,6 +14,10 @@
 		586A6FE922113C03005A114A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 586A6FE722113C03005A114A /* LaunchScreen.storyboard */; };
 		586A6FF122113E8E005A114A /* FriendsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586A6FF022113E8E005A114A /* FriendsController.swift */; };
 		586A6FFE22118412005A114A /* FriendsControllerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586A6FFD22118412005A114A /* FriendsControllerHelper.swift */; };
+		586A702022118C7D005A114A /* Message+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586A701C22118C7D005A114A /* Message+CoreDataClass.swift */; };
+		586A702122118C7D005A114A /* Message+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586A701D22118C7D005A114A /* Message+CoreDataProperties.swift */; };
+		586A702222118C7D005A114A /* Friend+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586A701E22118C7D005A114A /* Friend+CoreDataClass.swift */; };
+		586A702322118C7D005A114A /* Friend+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586A701F22118C7D005A114A /* Friend+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +30,11 @@
 		586A6FEA22113C03005A114A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		586A6FF022113E8E005A114A /* FriendsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsController.swift; sourceTree = "<group>"; };
 		586A6FFD22118412005A114A /* FriendsControllerHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsControllerHelper.swift; sourceTree = "<group>"; };
+		586A700B22118A7E005A114A /* fbMessenger 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "fbMessenger 2.xcdatamodel"; sourceTree = "<group>"; };
+		586A701C22118C7D005A114A /* Message+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Message+CoreDataClass.swift"; sourceTree = "<group>"; };
+		586A701D22118C7D005A114A /* Message+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Message+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		586A701E22118C7D005A114A /* Friend+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Friend+CoreDataClass.swift"; sourceTree = "<group>"; };
+		586A701F22118C7D005A114A /* Friend+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Friend+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +75,10 @@
 				586A6FE722113C03005A114A /* LaunchScreen.storyboard */,
 				586A6FEA22113C03005A114A /* Info.plist */,
 				586A6FE222113BF8005A114A /* fbMessenger.xcdatamodeld */,
+				586A701C22118C7D005A114A /* Message+CoreDataClass.swift */,
+				586A701D22118C7D005A114A /* Message+CoreDataProperties.swift */,
+				586A701E22118C7D005A114A /* Friend+CoreDataClass.swift */,
+				586A701F22118C7D005A114A /* Friend+CoreDataProperties.swift */,
 			);
 			path = fbMessenger;
 			sourceTree = "<group>";
@@ -143,8 +156,12 @@
 			files = (
 				586A6FE422113BF8005A114A /* fbMessenger.xcdatamodeld in Sources */,
 				586A6FF122113E8E005A114A /* FriendsController.swift in Sources */,
+				586A702122118C7D005A114A /* Message+CoreDataProperties.swift in Sources */,
 				586A6FDC22113BF8005A114A /* AppDelegate.swift in Sources */,
 				586A6FFE22118412005A114A /* FriendsControllerHelper.swift in Sources */,
+				586A702322118C7D005A114A /* Friend+CoreDataProperties.swift in Sources */,
+				586A702222118C7D005A114A /* Friend+CoreDataClass.swift in Sources */,
+				586A702022118C7D005A114A /* Message+CoreDataClass.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -347,9 +364,10 @@
 		586A6FE222113BF8005A114A /* fbMessenger.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				586A700B22118A7E005A114A /* fbMessenger 2.xcdatamodel */,
 				586A6FE322113BF8005A114A /* fbMessenger.xcdatamodel */,
 			);
-			currentVersion = 586A6FE322113BF8005A114A /* fbMessenger.xcdatamodel */;
+			currentVersion = 586A700B22118A7E005A114A /* fbMessenger 2.xcdatamodel */;
 			path = fbMessenger.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
