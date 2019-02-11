@@ -8,22 +8,22 @@
 
 /* Begin PBXBuildFile section */
 		586A6FDC22113BF8005A114A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586A6FDB22113BF8005A114A /* AppDelegate.swift */; };
-		586A6FDE22113BF8005A114A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586A6FDD22113BF8005A114A /* ViewController.swift */; };
 		586A6FE122113BF8005A114A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 586A6FDF22113BF8005A114A /* Main.storyboard */; };
 		586A6FE422113BF8005A114A /* fbMessenger.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 586A6FE222113BF8005A114A /* fbMessenger.xcdatamodeld */; };
 		586A6FE622113C03005A114A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 586A6FE522113C03005A114A /* Assets.xcassets */; };
 		586A6FE922113C03005A114A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 586A6FE722113C03005A114A /* LaunchScreen.storyboard */; };
+		586A6FF122113E8E005A114A /* FriendsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586A6FF022113E8E005A114A /* FriendsController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		586A6FD822113BF8005A114A /* fbMessenger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = fbMessenger.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		586A6FDB22113BF8005A114A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		586A6FDD22113BF8005A114A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		586A6FE022113BF8005A114A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		586A6FE322113BF8005A114A /* fbMessenger.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = fbMessenger.xcdatamodel; sourceTree = "<group>"; };
 		586A6FE522113C03005A114A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		586A6FE822113C03005A114A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		586A6FEA22113C03005A114A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		586A6FF022113E8E005A114A /* FriendsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,7 +57,7 @@
 			isa = PBXGroup;
 			children = (
 				586A6FDB22113BF8005A114A /* AppDelegate.swift */,
-				586A6FDD22113BF8005A114A /* ViewController.swift */,
+				586A6FF022113E8E005A114A /* FriendsController.swift */,
 				586A6FDF22113BF8005A114A /* Main.storyboard */,
 				586A6FE522113C03005A114A /* Assets.xcassets */,
 				586A6FE722113C03005A114A /* LaunchScreen.storyboard */,
@@ -138,8 +138,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				586A6FDE22113BF8005A114A /* ViewController.swift in Sources */,
 				586A6FE422113BF8005A114A /* fbMessenger.xcdatamodeld in Sources */,
+				586A6FF122113E8E005A114A /* FriendsController.swift in Sources */,
 				586A6FDC22113BF8005A114A /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
