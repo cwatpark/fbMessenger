@@ -106,6 +106,9 @@ extension FriendsController{
                         print("Error fetching data \(error)")
                     }
                 }
+                
+                messages = messages?.sorted(by: {$0.date!.compare($1.date! as Date) == .orderedDescending})
+                
             }
         }
     }
