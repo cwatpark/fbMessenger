@@ -19,7 +19,7 @@
 		586A702C22118ECF005A114A /* Friend+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586A702822118ECF005A114A /* Friend+CoreDataClass.swift */; };
 		586A702D22118ECF005A114A /* Friend+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586A702922118ECF005A114A /* Friend+CoreDataProperties.swift */; };
 		586A702E22118ECF005A114A /* Message+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586A702A22118ECF005A114A /* Message+CoreDataClass.swift */; };
-		586A702F22118ECF005A114A /* Message+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586A702B22118ECF005A114A /* Message+CoreDataProperties.swift */; };
+		5BA28928221305CD009947B3 /* Message+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA28927221305CD009947B3 /* Message+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,7 +38,7 @@
 		586A702822118ECF005A114A /* Friend+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Friend+CoreDataClass.swift"; sourceTree = "<group>"; };
 		586A702922118ECF005A114A /* Friend+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Friend+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		586A702A22118ECF005A114A /* Message+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Message+CoreDataClass.swift"; sourceTree = "<group>"; };
-		586A702B22118ECF005A114A /* Message+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Message+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		5BA28927221305CD009947B3 /* Message+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Message+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,7 +84,7 @@
 				586A702822118ECF005A114A /* Friend+CoreDataClass.swift */,
 				586A702922118ECF005A114A /* Friend+CoreDataProperties.swift */,
 				586A702A22118ECF005A114A /* Message+CoreDataClass.swift */,
-				586A702B22118ECF005A114A /* Message+CoreDataProperties.swift */,
+				5BA28927221305CD009947B3 /* Message+CoreDataProperties.swift */,
 			);
 			path = fbMessenger;
 			sourceTree = "<group>";
@@ -168,7 +168,7 @@
 				586A6FDC22113BF8005A114A /* AppDelegate.swift in Sources */,
 				586A6FFE22118412005A114A /* FriendsControllerHelper.swift in Sources */,
 				586A702D22118ECF005A114A /* Friend+CoreDataProperties.swift in Sources */,
-				586A702F22118ECF005A114A /* Message+CoreDataProperties.swift in Sources */,
+				5BA28928221305CD009947B3 /* Message+CoreDataProperties.swift in Sources */,
 				586A702E22118ECF005A114A /* Message+CoreDataClass.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
