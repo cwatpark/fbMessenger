@@ -12,19 +12,26 @@ import CoreData
 extension FriendsController{
     
     func clearData(){
-//        let delegate = UIApplication.shared.delegate as? AppDelegate
-//
-//        if let context = delegate?.persistentContainer.viewContext {
-//
-                
+        let delegate = UIApplication.shared.delegate as? AppDelegate
         
-//        }
-        
-        
-
+        if let context = delegate?.persistentContainer.viewContext{
+            
+            let deleteFetchFriend = NSFetchRequest<NSFetchRequestResult>(entityName: "Friend")
+            let deleteFetchMessage = NSFetchRequest<NSFetchRequestResult>(entityName: "Message")
+            let deleteFriendsRequest = NSBatchDeleteRequest(fetchRequest: deleteFetchFriend)
+            let deleteMessagesRequest = NSBatchDeleteRequest(fetchRequest: deleteFetchMessage)
+            do {
+                try context.execute(deleteFriendsRequest)
+                try context.execute(deleteMessagesRequest)
+            } catch {
+                print("Error clearing data \(error)")
+            }
+        }
     }
     
     func setupData() {
+        
+        clearData()
         
         let delegate = UIApplication.shared.delegate as? AppDelegate
         
