@@ -61,8 +61,18 @@ extension FriendsController{
             let donald  = NSEntityDescription.insertNewObject(forEntityName: "Friend", into: context) as! Friend
             donald.name = "Donald Glover"
             donald.profileImageName = "glover"
-            
             createMessageWithText(text: "Hi,Im Miles Morales's Uncle", friend: donald, minutesAgo: 0, context: context)
+            
+            
+            let clint  = NSEntityDescription.insertNewObject(forEntityName: "Friend", into: context) as! Friend
+            clint.name = "Clint Barton"
+            clint.profileImageName = "barton"
+            createMessageWithText(text: "Hi,Im Clint Barton", friend: clint, minutesAgo: 60 * 24, context: context)
+            
+            let natasha  = NSEntityDescription.insertNewObject(forEntityName: "Friend", into: context) as! Friend
+            natasha.name = "Natasha Romanof"
+            natasha.profileImageName = "romanof"
+            createMessageWithText(text: "Hi,Im Natasha Romanof", friend: natasha, minutesAgo: 8 * 60 * 24, context: context)
             
             do{
                 try context.save()

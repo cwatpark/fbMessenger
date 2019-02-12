@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		584025FB2212904200D369C1 /* ChatLogController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 584025FA2212904200D369C1 /* ChatLogController.swift */; };
+		584025FD2212A9C100D369C1 /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 584025FC2212A9C100D369C1 /* CustomTabBarController.swift */; };
 		586A6FDC22113BF8005A114A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586A6FDB22113BF8005A114A /* AppDelegate.swift */; };
 		586A6FE122113BF8005A114A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 586A6FDF22113BF8005A114A /* Main.storyboard */; };
 		586A6FE422113BF8005A114A /* fbMessenger.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 586A6FE222113BF8005A114A /* fbMessenger.xcdatamodeld */; };
@@ -21,6 +23,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		584025FA2212904200D369C1 /* ChatLogController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatLogController.swift; sourceTree = "<group>"; };
+		584025FC2212A9C100D369C1 /* CustomTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
 		586A6FD822113BF8005A114A /* fbMessenger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = fbMessenger.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		586A6FDB22113BF8005A114A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		586A6FE022113BF8005A114A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -70,6 +74,8 @@
 				586A6FDB22113BF8005A114A /* AppDelegate.swift */,
 				586A6FF022113E8E005A114A /* FriendsController.swift */,
 				586A6FFD22118412005A114A /* FriendsControllerHelper.swift */,
+				584025FA2212904200D369C1 /* ChatLogController.swift */,
+				584025FC2212A9C100D369C1 /* CustomTabBarController.swift */,
 				586A6FDF22113BF8005A114A /* Main.storyboard */,
 				586A6FE522113C03005A114A /* Assets.xcassets */,
 				586A6FE722113C03005A114A /* LaunchScreen.storyboard */,
@@ -154,7 +160,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				584025FB2212904200D369C1 /* ChatLogController.swift in Sources */,
 				586A6FE422113BF8005A114A /* fbMessenger.xcdatamodeld in Sources */,
+				584025FD2212A9C100D369C1 /* CustomTabBarController.swift in Sources */,
 				586A702C22118ECF005A114A /* Friend+CoreDataClass.swift in Sources */,
 				586A6FF122113E8E005A114A /* FriendsController.swift in Sources */,
 				586A6FDC22113BF8005A114A /* AppDelegate.swift in Sources */,
