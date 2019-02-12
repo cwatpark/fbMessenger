@@ -118,6 +118,12 @@ class ChatLogMessageCell: BaseCell {
         return imageView
     }()
     
+    let bubbleImageView: UIImageView = {
+        let imageView = UIImageView()
+        //imageView.image = UIImage(named: "bubble_gray")!.resizableImage(withCapInsets: (UIEdgeInsets(top: 30, left: 30, bottom: 30, right: 30)))
+        return imageView
+    }()
+    
     override func setupViews() {
         super.setupViews()
         
@@ -125,13 +131,16 @@ class ChatLogMessageCell: BaseCell {
         
         addSubview(textBubbleView)
         addSubview(messageTextView)
-        //addConstraintsWithFormat(format: "H:|[v0]|", views: messageTextView)
-        //addConstraintsWithFormat(format: "V:|[v0]|", views: messageTextView)
+  
         addSubview(profileImageView)
         addConstraintsWithFormat(format: "H:|-8-[v0(30)]", views: profileImageView)
         addConstraintsWithFormat(format: "V:[v0(30)]|", views: profileImageView)
         profileImageView.backgroundColor = UIColor.blue
         //backgroundColor = UIColor.blue
+        
+        textBubbleView.addSubview(bubbleImageView)
+        textBubbleView.addConstraintsWithFormat(format: "H:|[v0]|", views: bubbleImageView)
+        textBubbleView.addConstraintsWithFormat(format: "V:|[v0]|", views: bubbleImageView)
     }
     
 }
