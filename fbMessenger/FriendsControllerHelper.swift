@@ -9,40 +9,74 @@
 import UIKit
 import CoreData
 
-//class Friend: NSObject {
-//    var name: String?
-//    var profileImageName: String?
-//}
-//
-//class Message: NSObject{
-//    var text:String?
-//    var date: NSDate?
-//    
-//    var friend: Friend?
-//}
-
 extension FriendsController{
-    func setupData(){
+    
+    func clearData(){
+//        let delegate = UIApplication.shared.delegate as? AppDelegate
+//
+//        if let context = delegate?.persistentContainer.viewContext {
+//
+                
         
-        let tony = Friend()
-        tony.name = "Tony Stark"
-        tony.profileImageName = "stark"
-        
-        let message = Message()
-        message.friend = tony
-        message.text = "Hello, My name is tony."
-        message.date = NSDate()
+//        }
         
         
-        let steve = Friend()
-        steve.name = "Steve Rogers"
-        steve.profileImageName = "roger"
+
+    }
+    
+    func setupData() {
         
-        let messageSteve = Message()
-        messageSteve.friend = steve
-        messageSteve.text = "Hello, My name is Steve Rogers."
-        messageSteve.date = NSDate()
+        let delegate = UIApplication.shared.delegate as? AppDelegate
         
-        messages = [message,messageSteve]
+        if let context = delegate?.persistentContainer.viewContext {
+            
+            let tony = NSEntityDescription.insertNewObject(forEntityName: "Friend", into: context) as! Friend
+            
+            //let tony = Friend()
+            tony.name = "Tony Stark"
+            tony.profileImageName = "stark"
+            
+            let message = NSEntityDescription.insertNewObject(forEntityName: "Message", into: context) as! Message
+            message.friend = tony
+            message.text = "Hello, My name is tony."
+            message.date = NSDate()
+            
+            
+            let steve = NSEntityDescription.insertNewObject(forEntityName: "Friend", into: context) as! Friend
+            steve.name = "Steve Rogers"
+            steve.profileImageName = "roger"
+            
+            let messageSteve = NSEntityDescription.insertNewObject(forEntityName: "Message", into: context) as! Message
+            messageSteve.friend = steve
+            messageSteve.text = "Hello, My name is Steve Rogers."
+            messageSteve.date = NSDate()
+            
+            do{
+                try context.save()
+            }catch let error{
+                print(error)
+            }
+            
+        }
+       
+        loadData()
+        
+    }
+    
+    func loadData(){
+        
+        let delegate = UIApplication.shared.delegate as? AppDelegate
+        
+        if let context = delegate?.persistentContainer.viewContext{
+            
+            let fetchRequest = NSFetchRequest<Message>(entityName: "Message")
+            
+            do {
+                messages = try context.fetch(fetchRequest)
+            } catch {
+                print("Error fetching data \(error)")
+            }
+            
+        }
     }
 }
