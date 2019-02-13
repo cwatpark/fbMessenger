@@ -29,9 +29,28 @@ class FriendsController: UICollectionViewController, UICollectionViewDelegateFlo
         return frc
     }()
     
+    var blockOperations = [BlockOperation]()
+    
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
-        if type == .insert {
-            collectionView.insertItems(at: [newIndexPath!])
+        if type  == .insert {
+            blockOperations.append(BlockOperation(block: {
+                self.collectionView.insertItems(at: [newIndexPath!])
+            }))
+            //collectionView.scrollToItem(at: newIndexPath!, at: .bottom, animated: true)
+        }
+    }
+    
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        collectionView.performBatchUpdates({
+            
+            for operation in self.blockOperations {
+                operation.start()
+            }
+            
+        }) { (completed) in
+            let lastItem = self.fetchResultsController.sections![0].numberOfObjects - 1
+            let indexPath = NSIndexPath(item: lastItem, section: 0)
+            self.collectionView.scrollToItem(at: indexPath as IndexPath, at: .bottom, animated: true)
         }
     }
     
