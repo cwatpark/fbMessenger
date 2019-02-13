@@ -14,9 +14,13 @@ class FriendsController: UICollectionViewController,UICollectionViewDelegateFlow
     
     var messages: [Message]?
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        tabBarController?.tabBar.isHidden = false
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         navigationItem.title = "Recent"
         collectionView.backgroundColor = UIColor.white
         collectionView.alwaysBounceVertical = true

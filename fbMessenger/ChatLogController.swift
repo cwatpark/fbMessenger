@@ -22,10 +22,70 @@ class ChatLogController: UICollectionViewController, UICollectionViewDelegateFlo
     
     var messages: [Message]?
     
+    let messageInputContainerView: UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor.white
+        return view
+    }()
+    
+    let inputTextField: UITextField = {
+       let textfield = UITextField()
+        textfield.placeholder = "Type Message"
+        return textfield
+    }()
+    
+    var bottomConstraint: NSLayoutConstraint?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        tabBarController?.tabBar.isHidden = true
         collectionView.backgroundColor = UIColor.white
         collectionView.register(ChatLogMessageCell.self, forCellWithReuseIdentifier: cellId)
+        view.addSubview(messageInputContainerView)
+        view.addConstraintsWithFormat(format: "H:|[v0]|", views: messageInputContainerView)
+        view.addConstraintsWithFormat(format: "V:[v0(48)]", views: messageInputContainerView)
+        
+        bottomConstraint = NSLayoutConstraint(item: messageInputContainerView, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1, constant: 0)
+        
+        view.addConstraint(bottomConstraint!)
+        
+        setupInputComponents()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification), name: UIResponder.keyboardWillShowNotification, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification), name: UIResponder.keyboardWillHideNotification, object: nil)
+        
+    }
+    
+    @objc func handleKeyboardNotification(notification: NSNotification) {
+        
+        if let userInfo = notification.userInfo {
+            
+            let keyboardFrame = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
+            //bottomConstraint?.constant = -keyboardFrame.height + 48
+            print(keyboardFrame)
+            let isKeyboardShowing = notification.name == UIResponder.keyboardWillShowNotification
+            bottomConstraint?.constant = isKeyboardShowing ? -keyboardFrame.height : 0
+            
+            UIView.animate(withDuration: 0, delay: 0, options: UIView.AnimationOptions.curveEaseOut, animations: {
+                self.view.layoutIfNeeded()
+            }) { (complate) in
+                
+            }
+        }
+        
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        inputTextField.endEditing(true)
+        
+    }
+    
+    private func setupInputComponents() {
+        messageInputContainerView.addSubview(inputTextField)
+        messageInputContainerView.addConstraintsWithFormat(format: "H:|-8-[v0]|", views: inputTextField)
+        messageInputContainerView.addConstraintsWithFormat(format: "V:|[v0]|", views: inputTextField)
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
