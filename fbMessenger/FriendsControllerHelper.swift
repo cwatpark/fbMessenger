@@ -53,17 +53,17 @@ extension FriendsController{
             let donald  = NSEntityDescription.insertNewObject(forEntityName: "Friend", into: context) as! Friend
             donald.name = "Donald Glover"
             donald.profileImageName = "glover"
-            createMessageWithText(text: "Hi,Im Miles Morales's Uncle", friend: donald, minutesAgo: 0, context: context)
+            FriendsController.createMessageWithText(text: "Hi,Im Miles Morales's Uncle", friend: donald, minutesAgo: 0, context: context)
             
             let clint  = NSEntityDescription.insertNewObject(forEntityName: "Friend", into: context) as! Friend
             clint.name = "Clint Barton"
             clint.profileImageName = "barton"
-            createMessageWithText(text: "Hi,Im Clint Barton", friend: clint, minutesAgo: 60 * 24, context: context)
+            FriendsController.createMessageWithText(text: "Hi,Im Clint Barton", friend: clint, minutesAgo: 60 * 24, context: context)
             
             let natasha  = NSEntityDescription.insertNewObject(forEntityName: "Friend", into: context) as! Friend
             natasha.name = "Natasha Romanof"
             natasha.profileImageName = "romanof"
-            createMessageWithText(text: "Hi,Im Natasha Romanof", friend: natasha, minutesAgo: 8 * 60 * 24, context: context)
+            FriendsController.createMessageWithText(text: "Hi,Im Natasha Romanof", friend: natasha, minutesAgo: 8 * 60 * 24, context: context)
             
             do{
                 try context.save()
@@ -79,21 +79,22 @@ extension FriendsController{
         steve.name = "Steve Rogers"
         steve.profileImageName = "roger"
         
-        createMessageWithText(text: "Good Morning, My name is Steve Rogers.", friend: steve, minutesAgo: 2, context: context)
-        createMessageWithText(text: "Thanos is coming,We need to be ready for this wars,Avengers Assemble !!!, Iron Man/Hulk/BlackWidow/This/Captain America/Hawkeyes", friend: steve, minutesAgo: 1, context: context)
-        createMessageWithText(text: "Ms.Marvel is coming too.", friend: steve, minutesAgo: 0, context: context)
+        FriendsController.createMessageWithText(text: "Good Morning, My name is Steve Rogers.", friend: steve, minutesAgo: 2, context: context)
+        FriendsController.createMessageWithText(text: "Thanos is coming,We need to be ready for this wars,Avengers Assemble !!!, Iron Man/Hulk/BlackWidow/This/Captain America/Hawkeyes", friend: steve, minutesAgo: 1, context: context)
+        FriendsController.createMessageWithText(text: "Ms.Marvel is coming too.", friend: steve, minutesAgo: 0, context: context)
         //response message
-        createMessageWithText(text: "We can win !!!", friend: steve, minutesAgo: 5, context: context, isSender: true)
+        FriendsController.createMessageWithText(text: "We can win !!!", friend: steve, minutesAgo: 5, context: context, isSender: true)
   
         
     }
     
-    private func createMessageWithText(text: String, friend: Friend, minutesAgo: Double, context: NSManagedObjectContext, isSender: Bool = false){
+    static func createMessageWithText(text: String, friend: Friend, minutesAgo: Double, context: NSManagedObjectContext, isSender: Bool = false) -> Message {
         let message = NSEntityDescription.insertNewObject(forEntityName: "Message", into: context) as! Message
         message.friend = friend
         message.text = text
         message.date = NSDate().addingTimeInterval(-minutesAgo * 60)
         message.isSender = NSNumber(booleanLiteral: isSender) as! Bool
+        return message
     }
     
     func loadData() {

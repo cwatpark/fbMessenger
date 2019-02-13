@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import CoreData
+
 class ChatLogController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
     private let cellId = "cellId"
@@ -34,19 +36,90 @@ class ChatLogController: UICollectionViewController, UICollectionViewDelegateFlo
         return textfield
     }()
     
-    let sendButton: UIButton = {
+    var sendButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Send", for: .normal)
         let titleColor = UIColor(red: 0, green: 137/255, blue: 249/255, alpha: 1)
         button.setTitleColor(titleColor, for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
+        button.addTarget(self, action: #selector(handleSend), for: .touchUpInside)
         return button
     }()
     
+    @objc func handleSend() {
+        print(inputTextField.text)
+        
+        let delegate = UIApplication.shared.delegate as? AppDelegate
+        let context = delegate?.persistentContainer.viewContext
+        
+        let message = FriendsController.createMessageWithText(text: inputTextField.text!, friend: friend!, minutesAgo: 0, context: context!, isSender: true)
+        
+        do{
+            try context?.save()
+            
+            messages?.append(message)
+            
+            let item = messages!.count - 1
+            let insertionIndexPath = NSIndexPath(item: item, section: 0)
+            
+            collectionView.insertItems(at: [insertionIndexPath as IndexPath])
+            collectionView.scrollToItem(at: insertionIndexPath as IndexPath, at: .bottom, animated: true)
+            inputTextField.text = nil
+            
+        }catch{
+            print(error)
+        }
+    }
+    
     var bottomConstraint: NSLayoutConstraint?
+    
+    @objc func simulate(){
+        
+        let delegate = UIApplication.shared.delegate as? AppDelegate
+        let context = delegate?.persistentContainer.viewContext
+        
+        let message =  FriendsController.createMessageWithText(text: "Here a text Message that was sent a few minute ago...", friend: friend!, minutesAgo: 1, context: context!)
+        
+        do{
+            try context?.save()
+            
+            messages?.append(message)
+            
+            messages = messages?.sorted(by: {$0.date!.compare($1.date! as Date) == .orderedAscending})
+            
+            if let item = messages?.firstIndex(of: message){
+                let receivingIndexPath = NSIndexPath(item: item, section: 0)
+                collectionView.insertItems(at: [receivingIndexPath as IndexPath])
+            }
+        }catch{
+            print(error)
+        }
+        
+    }
+    
+    let fetchedResultController: NSFetchedResultsController = { () -> NSFetchedResultsController<Message> in
+        
+        let fetchRequest = NSFetchRequest<Message>(entityName: "Message")
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "date", ascending: true)]
+        //fetchRequest.predicate = NSPredicate(format: "friend.name = %@", )
+        let delegate = UIApplication.shared.delegate as? AppDelegate
+        let context = delegate?.persistentContainer.viewContext
+        
+        let frc = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context!, sectionNameKeyPath: nil, cacheName: nil)
+        return frc
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        do{
+            try fetchedResultController.performFetch()
+            print(fetchedResultController.sections?[0].numberOfObjects)
+        }catch{
+            print(error)
+        }
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Simulator ", style: .plain, target: self, action: #selector(simulate))
         
         tabBarController?.tabBar.isHidden = true
         collectionView.backgroundColor = UIColor.white
@@ -84,7 +157,7 @@ class ChatLogController: UICollectionViewController, UICollectionViewDelegateFlo
                 if isKeyboardShowing{
                     let indexPath = NSIndexPath(item: self.messages!.count - 1 , section: 0)
                     self.collectionView.scrollToItem(at: indexPath as IndexPath, at: .bottom, animated: true)
-                } 
+                }
             }
         }
         
