@@ -39,7 +39,6 @@ extension FriendsController{
         if let context = delegate?.persistentContainer.viewContext {
             
             let tony = NSEntityDescription.insertNewObject(forEntityName: "Friend", into: context) as! Friend
-            
             //let tony = Friend()
             tony.name = "Tony Stark"
             tony.profileImageName = "stark"
@@ -49,23 +48,12 @@ extension FriendsController{
             message.text = "Hello, My name is tony."
             message.date = NSDate()
             
-            
-//            let steve = NSEntityDescription.insertNewObject(forEntityName: "Friend", into: context) as! Friend
-//            steve.name = "Steve Rogers"
-//            steve.profileImageName = "roger"
-//
-//            createMessageWithText(text: "Good Morning, My name is Steve Rogers.", friend: steve, minutesAgo: 2, context: context)
-//            createMessageWithText(text: "Thanos is coming,We need to be ready for this wars,Avengers Assemble !!!, Iron Man/Hulk/BlackWidow/This/Captain America/Hawkeyes", friend: steve, minutesAgo: 1, context: context)
-//            createMessageWithText(text: "Ms.Marvel is coming too.", friend: steve, minutesAgo: 0, context: context)
-            
             createSteveMessagesWithContext(context: context)
             
-        
             let donald  = NSEntityDescription.insertNewObject(forEntityName: "Friend", into: context) as! Friend
             donald.name = "Donald Glover"
             donald.profileImageName = "glover"
             createMessageWithText(text: "Hi,Im Miles Morales's Uncle", friend: donald, minutesAgo: 0, context: context)
-            
             
             let clint  = NSEntityDescription.insertNewObject(forEntityName: "Friend", into: context) as! Friend
             clint.name = "Clint Barton"
@@ -94,9 +82,10 @@ extension FriendsController{
         createMessageWithText(text: "Good Morning, My name is Steve Rogers.", friend: steve, minutesAgo: 2, context: context)
         createMessageWithText(text: "Thanos is coming,We need to be ready for this wars,Avengers Assemble !!!, Iron Man/Hulk/BlackWidow/This/Captain America/Hawkeyes", friend: steve, minutesAgo: 1, context: context)
         createMessageWithText(text: "Ms.Marvel is coming too.", friend: steve, minutesAgo: 0, context: context)
-        
         //response message
-        createMessageWithText(text: "We can win !!!", friend: steve, minutesAgo: 0, context: context, isSender: true)
+        createMessageWithText(text: "We can win !!!", friend: steve, minutesAgo: 5, context: context, isSender: true)
+  
+        
     }
     
     private func createMessageWithText(text: String, friend: Friend, minutesAgo: Double, context: NSManagedObjectContext, isSender: Bool = false){

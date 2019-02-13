@@ -34,6 +34,15 @@ class ChatLogController: UICollectionViewController, UICollectionViewDelegateFlo
         return textfield
     }()
     
+    let sendButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("Send", for: .normal)
+        let titleColor = UIColor(red: 0, green: 137/255, blue: 249/255, alpha: 1)
+        button.setTitleColor(titleColor, for: .normal)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
+        return button
+    }()
+    
     var bottomConstraint: NSLayoutConstraint?
     
     override func viewDidLoad() {
@@ -72,6 +81,10 @@ class ChatLogController: UICollectionViewController, UICollectionViewDelegateFlo
                 self.view.layoutIfNeeded()
             }) { (complate) in
                 
+                if isKeyboardShowing{
+                    let indexPath = NSIndexPath(item: self.messages!.count - 1 , section: 0)
+                    self.collectionView.scrollToItem(at: indexPath as IndexPath, at: .bottom, animated: true)
+                } 
             }
         }
         
@@ -83,9 +96,18 @@ class ChatLogController: UICollectionViewController, UICollectionViewDelegateFlo
     }
     
     private func setupInputComponents() {
+        let topBorderView = UIView()
+        topBorderView.backgroundColor = UIColor(white: 0.5, alpha: 0.5)
+        
         messageInputContainerView.addSubview(inputTextField)
-        messageInputContainerView.addConstraintsWithFormat(format: "H:|-8-[v0]|", views: inputTextField)
+        messageInputContainerView.addSubview(sendButton)
+        messageInputContainerView.addSubview(topBorderView)
+        
+        messageInputContainerView.addConstraintsWithFormat(format: "H:|-8-[v0][v1(60)]|", views: inputTextField, sendButton)
         messageInputContainerView.addConstraintsWithFormat(format: "V:|[v0]|", views: inputTextField)
+        messageInputContainerView.addConstraintsWithFormat(format: "V:|[v0]|", views: sendButton)
+        messageInputContainerView.addConstraintsWithFormat(format: "H:|[v0]|", views: topBorderView)
+        messageInputContainerView.addConstraintsWithFormat(format: "V:|[v0(0.5)]", views: topBorderView)
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -126,8 +148,6 @@ class ChatLogController: UICollectionViewController, UICollectionViewDelegateFlo
             
             
         }
-        
-        
         
         return cell
     }
