@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class FriendsController: UICollectionViewController,UICollectionViewDelegateFlowLayout {
+class FriendsController: UICollectionViewController, UICollectionViewDelegateFlowLayout, NSFetchedResultsControllerDelegate {
     
     private let cellId = "celId"
     
@@ -17,13 +17,23 @@ class FriendsController: UICollectionViewController,UICollectionViewDelegateFlow
     
     lazy var fetchResultsController: NSFetchedResultsController = { () -> NSFetchedResultsController<Friend> in
         let fetchRequest = NSFetchRequest<Friend>(entityName: "Friend")
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "lastMessage.date", ascending: false)]
+        
+        fetchRequest.predicate = NSPredicate(format: "lastMessage != nil")
         
         let delegate = (UIApplication.shared.delegate as? AppDelegate)
         let context = delegate?.persistentContainer.viewContext
         
         let frc = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context!, sectionNameKeyPath: nil, cacheName: nil)
+        frc.delegate = self
         return frc
     }()
+    
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+        if type == .insert {
+            collectionView.insertItems(at: [newIndexPath!])
+        }
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
@@ -44,6 +54,29 @@ class FriendsController: UICollectionViewController,UICollectionViewDelegateFlow
             print(error)
         }
         
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add Mark", style: .plain, target: self, action: #selector(addMark))
+        
+    }
+    
+    @objc func addMark() {
+        
+        let delegate = (UIApplication.shared.delegate as? AppDelegate)
+        let context = delegate?.persistentContainer.viewContext
+        
+        let tony = NSEntityDescription.insertNewObject(forEntityName: "Friend", into: context!) as! Friend
+        //let tony = Friend()
+        tony.name = "Tony Stark"
+        tony.profileImageName = "stark"
+        
+        FriendsController.createMessageWithText(text: "Hello Add MarkZuker", friend: tony, minutesAgo: 0, context: context!)
+        
+        let hulk = NSEntityDescription.insertNewObject(forEntityName: "Friend", into: context!) as! Friend
+        //let tony = Friend()
+        hulk.name = "Incredible Hulk"
+        hulk.profileImageName = "hulk"
+        
+        FriendsController.createMessageWithText(text: "Hello Add hulk", friend: hulk, minutesAgo: 0, context: context!)
+        
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -59,9 +92,12 @@ class FriendsController: UICollectionViewController,UICollectionViewDelegateFlow
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! MessageCell
         
         let friend = fetchResultsController.object(at: indexPath) as! Friend
-        if let message = messages?[indexPath.item]{
-            cell.message = message
-        }
+        
+        cell.message = friend.lastMessage
+//
+//        if let message = messages?[indexPath.item]{
+//            cell.message = message
+//        }
         
         return cell
     }
@@ -74,7 +110,9 @@ class FriendsController: UICollectionViewController,UICollectionViewDelegateFlow
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let layout = UICollectionViewFlowLayout()
         let controller = ChatLogController(collectionViewLayout: layout)
-        controller.friend = messages?[indexPath.item].friend
+        
+        let friend = fetchResultsController.object(at: indexPath) as! Friend
+        controller.friend = friend
         navigationController?.pushViewController(controller, animated: true)
     }
     

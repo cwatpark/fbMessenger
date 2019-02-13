@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		584025FB2212904200D369C1 /* ChatLogController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 584025FA2212904200D369C1 /* ChatLogController.swift */; };
 		584025FD2212A9C100D369C1 /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 584025FC2212A9C100D369C1 /* CustomTabBarController.swift */; };
+		58489ECC22140F6D005A62A2 /* Friend+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58489ECB22140F6D005A62A2 /* Friend+CoreDataProperties.swift */; };
 		586A6FDC22113BF8005A114A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586A6FDB22113BF8005A114A /* AppDelegate.swift */; };
 		586A6FE122113BF8005A114A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 586A6FDF22113BF8005A114A /* Main.storyboard */; };
 		586A6FE422113BF8005A114A /* fbMessenger.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 586A6FE222113BF8005A114A /* fbMessenger.xcdatamodeld */; };
@@ -17,7 +18,6 @@
 		586A6FF122113E8E005A114A /* FriendsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586A6FF022113E8E005A114A /* FriendsController.swift */; };
 		586A6FFE22118412005A114A /* FriendsControllerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586A6FFD22118412005A114A /* FriendsControllerHelper.swift */; };
 		586A702C22118ECF005A114A /* Friend+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586A702822118ECF005A114A /* Friend+CoreDataClass.swift */; };
-		586A702D22118ECF005A114A /* Friend+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586A702922118ECF005A114A /* Friend+CoreDataProperties.swift */; };
 		586A702E22118ECF005A114A /* Message+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586A702A22118ECF005A114A /* Message+CoreDataClass.swift */; };
 		5BA28928221305CD009947B3 /* Message+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA28927221305CD009947B3 /* Message+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
@@ -25,6 +25,7 @@
 /* Begin PBXFileReference section */
 		584025FA2212904200D369C1 /* ChatLogController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatLogController.swift; sourceTree = "<group>"; };
 		584025FC2212A9C100D369C1 /* CustomTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
+		58489ECB22140F6D005A62A2 /* Friend+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Friend+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		586A6FD822113BF8005A114A /* fbMessenger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = fbMessenger.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		586A6FDB22113BF8005A114A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		586A6FE022113BF8005A114A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -36,7 +37,6 @@
 		586A6FFD22118412005A114A /* FriendsControllerHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsControllerHelper.swift; sourceTree = "<group>"; };
 		586A700B22118A7E005A114A /* fbMessenger 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "fbMessenger 2.xcdatamodel"; sourceTree = "<group>"; };
 		586A702822118ECF005A114A /* Friend+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Friend+CoreDataClass.swift"; sourceTree = "<group>"; };
-		586A702922118ECF005A114A /* Friend+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Friend+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		586A702A22118ECF005A114A /* Message+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Message+CoreDataClass.swift"; sourceTree = "<group>"; };
 		5BA28927221305CD009947B3 /* Message+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Message+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -82,7 +82,7 @@
 				586A6FEA22113C03005A114A /* Info.plist */,
 				586A6FE222113BF8005A114A /* fbMessenger.xcdatamodeld */,
 				586A702822118ECF005A114A /* Friend+CoreDataClass.swift */,
-				586A702922118ECF005A114A /* Friend+CoreDataProperties.swift */,
+				58489ECB22140F6D005A62A2 /* Friend+CoreDataProperties.swift */,
 				586A702A22118ECF005A114A /* Message+CoreDataClass.swift */,
 				5BA28927221305CD009947B3 /* Message+CoreDataProperties.swift */,
 			);
@@ -167,7 +167,7 @@
 				586A6FF122113E8E005A114A /* FriendsController.swift in Sources */,
 				586A6FDC22113BF8005A114A /* AppDelegate.swift in Sources */,
 				586A6FFE22118412005A114A /* FriendsControllerHelper.swift in Sources */,
-				586A702D22118ECF005A114A /* Friend+CoreDataProperties.swift in Sources */,
+				58489ECC22140F6D005A62A2 /* Friend+CoreDataProperties.swift in Sources */,
 				5BA28928221305CD009947B3 /* Message+CoreDataProperties.swift in Sources */,
 				586A702E22118ECF005A114A /* Message+CoreDataClass.swift in Sources */,
 			);

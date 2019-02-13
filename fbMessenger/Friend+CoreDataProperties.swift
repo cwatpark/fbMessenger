@@ -2,7 +2,7 @@
 //  Friend+CoreDataProperties.swift
 //  fbMessenger
 //
-//  Created by Ice on 11/2/2562 BE.
+//  Created by Ice on 13/2/2562 BE.
 //  Copyright © 2562 Ice. All rights reserved.
 //
 //
@@ -20,6 +20,7 @@ extension Friend {
     @NSManaged public var name: String?
     @NSManaged public var profileImageName: String?
     @NSManaged public var messages: NSSet?
+    @NSManaged public var lastMessage: Message?
 
 }
 
