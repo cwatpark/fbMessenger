@@ -103,7 +103,7 @@ extension FriendsController{
         if let context = delegate?.persistentContainer.viewContext{
             
             if let friend = fetchFriends(){
-                
+            //
                 messages = [Message]()
                 
                 for friendx in friend {
