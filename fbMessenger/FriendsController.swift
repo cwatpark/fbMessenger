@@ -7,12 +7,23 @@
 //
 
 import UIKit
+import CoreData
 
 class FriendsController: UICollectionViewController,UICollectionViewDelegateFlowLayout {
     
     private let cellId = "celId"
     
-    var messages: [Message]?
+//    var messages: [Message]?
+    
+    lazy var fetchResultsController: NSFetchedResultsController = { () -> NSFetchedResultsController<Friend> in
+        let fetchRequest = NSFetchRequest<Friend>(entityName: "Friend")
+        
+        let delegate = (UIApplication.shared.delegate as? AppDelegate)
+        let context = delegate?.persistentContainer.viewContext
+        
+        let frc = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context!, sectionNameKeyPath: nil, cacheName: nil)
+        return frc
+    }()
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
@@ -26,10 +37,19 @@ class FriendsController: UICollectionViewController,UICollectionViewDelegateFlow
         collectionView.alwaysBounceVertical = true
         collectionView.register(MessageCell.self, forCellWithReuseIdentifier: cellId)
         setupData()
+        
+        do{
+            try fetchResultsController.performFetch()
+        }catch{
+            print(error)
+        }
+        
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if let count =  messages?.count{
+        
+        if let count = fetchResultsController.sections?[section].numberOfObjects {
+        //if let count =  messages?.count{
             return count
         }
         return 0
@@ -38,6 +58,7 @@ class FriendsController: UICollectionViewController,UICollectionViewDelegateFlow
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! MessageCell
         
+        let friend = fetchResultsController.object(at: indexPath) as! Friend
         if let message = messages?[indexPath.item]{
             cell.message = message
         }

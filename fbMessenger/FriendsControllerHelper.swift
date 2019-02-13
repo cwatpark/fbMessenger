@@ -99,7 +99,7 @@ extension FriendsController{
     
     func loadData() {
         
-        let delegate = UIApplication.shared.delegate as? AppDelegate
+        let delegate = (UIApplication.shared.delegate as? AppDelegate)
         
         if let context = delegate?.persistentContainer.viewContext{
             
